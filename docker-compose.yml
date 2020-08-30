@@ -13,6 +13,21 @@ services:
         networks:
             - mynetwork
     
+    angularapp:
+        image: nandacamargo/angular_firstapp
+        container_name: angular_app
+        build:
+            context: ./FirstApp-SPA
+            dockerfile: angular.dockerfile
+        volumes:
+            - ./FirstApp-SPA:/usr/src/app
+        ports:
+            - "4200:4200"
+        networks:
+            - mynetwork
+        depends_on:
+            - dotnetapp
+
 
 
 networks:
