@@ -1,0 +1,22 @@
+version: '3.5'
+services:
+    dotnetapp:
+        image: nandacamargo/dotnet_firstapp
+        container_name: dotnet_app
+        build:
+            context: ./FirstApp.API
+            dockerfile: dotnet.dockerfile
+        volumes:
+            - ./FirstApp.API:/first_app
+        ports:
+            - "5000:80"
+        networks:
+            - mynetwork
+    
+
+
+networks:
+    mynetwork:
+       driver: bridge
+
+
